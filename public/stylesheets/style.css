@@ -22,7 +22,9 @@ code {
 }
 
 a {
-  color: #00B7FF;
+  color: salmon;
+	text-decoration: none;
+	border-bottom: 1px dotted;
 }
 
 .footer {
