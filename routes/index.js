@@ -25,7 +25,8 @@ router.get('/', function(req, res, next) {
 			// put to `data`
 			const data = {
 				currentMeters: result.all_ride_totals.elevation_gain,
-				targetMeters: 100000
+				targetMeters: 100000,
+				title: '#YOLO'
 			}
 			res.render('index', data);
 		} else {
