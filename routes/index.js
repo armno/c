@@ -8,7 +8,7 @@ const config = require('../config');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-	const url = `${BASEURL}/athletes/${config.PROFILE_ID}/statsz`;
+	const url = `${BASEURL}/athletes/${config.PROFILE_ID}/stats`;
 
 	// make api request to strava api
 	request.get({
