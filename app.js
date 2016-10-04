@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var config = require('./config');
 var GitHubWebhook = require('express-github-webhook');
-var webhookHandler = GithubWebHook({ path: '/pull', secret: config.GITHUB_SECRET });
+var webhookHandler = GitHubWebhook({ path: '/pull', secret: config.GITHUB_SECRET });
 
 var routes = require('./routes/index');
 
