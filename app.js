@@ -64,7 +64,11 @@ webhookHandler.on('push', function (repo, data) {
 	// run git pull
 	exec('cd /var/www/html/c.armno.xyz && git pull origin master',
 		function(error, stdout, stderror) {
-			console.info(stdout);
+			if (!error) {
+				console.info(stdout);
+			} else {
+				console.error(error);
+			}
 		})
 });
 
