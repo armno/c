@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var config = require('./config');
 var GitHubWebhook = require('express-github-webhook');
 var webhookHandler = GitHubWebhook({ path: '/pull', secret: config.GITHUB_SECRET });
+var exec = require('child_process').exec;
 
 var routes = require('./routes/index');
 
@@ -60,7 +61,11 @@ app.use(function(err, req, res, next) {
 });
 
 webhookHandler.on('push', function (repo, data) {
-	console.log(data);
+	// run git pull
+	exec('cd /var/www/html/c.armno.xyz && git pull origin master',
+		function(error, stdout, stderror) {
+			console.info(stdout);
+		})
 });
 
 module.exports = app;
