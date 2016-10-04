@@ -40,6 +40,7 @@ router.post('/pull', (req, res) => {
 	// verify the request if it really comes from github webhook
 	// exec shellscript to pull
 	console.log(req.body);
+	res.send('awesome!');
 });
 
 module.exports = router;
