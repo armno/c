@@ -24,8 +24,8 @@ router.get('/', function(req, res, next) {
 
 			// put to `data`
 			const data = {
-				currentMeters: result.all_ride_totals.elevation_gain,
-				targetMeters: 100000,
+				currentMeters: result.all_ride_totals.elevation_gain.toLocaleString('en-US'),
+				targetMeters: '100,000',
 				title: '#YOLO'
 			}
 			res.render('index', data);
