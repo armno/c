@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var config = require('./config');
+var GitHubWebhook = require('express-github-webhook');
+var webhookHandler = GithubWebHook({ path: '/pull', secret: config.GITHUB_SECRET });
+
 var routes = require('./routes/index');
 
 var app = express();
@@ -20,6 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(webhookHandler);
 
 app.use('/', routes);
 
@@ -54,5 +59,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
+webhookHandler.on('push', function (repo, data) {
+	console.log(data);
+});
 
 module.exports = app;
