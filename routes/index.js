@@ -5,6 +5,20 @@ const request = require('request');
 const BASEURL = `https://www.strava.com/api/v3`;
 const config = require('../config');
 
+const MongoClient = require('mongodb').MongoClient;
+MongoClient.connect('mongodb://localhost:27017/c', (err, db) => {
+ if (err) {
+     throw err;
+ }
+
+ db.collection('elevation').find().toArray((err, result) => {
+     if (err) {
+         throw err;
+     }
+     console.log(result);
+ });
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 

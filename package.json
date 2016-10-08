@@ -13,6 +13,7 @@
     "express": "~4.13.4",
     "express-github-webhook": "^1.0.5",
     "hbs": "~4.0.0",
+    "mongodb": "^2.2.10",
     "morgan": "~1.7.0",
     "request": "^2.75.0",
     "serve-favicon": "~2.3.0"
