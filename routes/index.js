@@ -37,8 +37,10 @@ router.get('/', function(req, res, next) {
 					// parse
 					const result = JSON.parse(body);
 					console.log('got data from strava api');
+					const now = new Date().getTime();
 					const elevation = {
-						name: result.all_ride_totals.elevation_gain
+						name: result.all_ride_totals.elevation_gain,
+						updatedAt: now
 					};
 					db.collection('elevation').save(elevation, (err, res) => {
 						if (err) {
