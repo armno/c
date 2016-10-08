@@ -55,7 +55,7 @@ router.get('/', function(req, res, next) {
 			 console.log('got value from db', result[0]);
 			 res.render('index', {
 				currentMeters: result[0].name,
-				targetMeters: 10000,
+				targetMeters: 100000,
 				title: '#YOLO'
 			 });
 		 }
