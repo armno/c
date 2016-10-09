@@ -7,6 +7,18 @@ const config = require('../config');
 
 const MongoClient = require('mongodb').MongoClient;
 
+router.post('/clear', (req, res, next) => {
+	MongoClient.connect('mongodb://localhost:27017/c', (err, db) => {
+		if (err) {
+			throw err;
+		}
+
+		db.collection('elevation').remove().then(result => {
+			res.send('ok');
+		});
+	});
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
@@ -42,12 +54,17 @@ router.get('/', function(req, res, next) {
 						name: result.all_ride_totals.elevation_gain,
 						updatedAt: now
 					};
-					db.collection('elevation').save(elevation, (err, res) => {
+					db.collection('elevation').save(elevation, (err, result) => {
 						if (err) {
 							return console.error(err);
 						}
 
 						console.log('saved into db');
+						res.render('index', {
+							currentMeters: elevation.name,
+							targetMeters: 100000,
+							title: '#Y0LO'
+						})
 					});
 				} else {
 					console.error(err);
