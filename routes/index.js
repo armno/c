@@ -33,16 +33,15 @@ router.get('/', function(req, res, next) {
 			if (err) {
 				throw err;
 			}
-			console.log(result);
+			console.log(result[result.length - 1]);
 
 			if (result.length !== 0) {
 				// there is an existing record
 				// if last updated date was longer than x days,
 				const updatedAt = moment(result[result.length - 1].updatedAt);
-				const now = moment();
-				const interval = 100; // 10 seconds
-				const timeDiff = now.diff(updatedAt, 'seconds');
-				console.log(`last update was ${timeDiff} seconds ago.`);
+				const interval = 1; // 1 day
+				const timeDiff = moment().diff(updatedAt, 'days');
+				console.log(`last update was ${timeDiff} days ago.`);
 
 				if (timeDiff > interval) {
 					console.info('data was too old. updating ...');
@@ -51,8 +50,10 @@ router.get('/', function(req, res, next) {
 						.then(elevation => {
 							saveCurrentElevation(db, elevation);
 						});
+						// render with `elevation`
 				} else {
 					console.info('still fresh data na');
+					// render with current value from db
 				}
 			}
 
@@ -121,8 +122,8 @@ function getElevationFromStrava() {
 function saveCurrentElevation(db, elevation) {
 	const data = {
 		name: elevation,
-		updatedAt: moment().unix()
-	}
+		updatedAt: new Date().getTime()
+	};
 	db.collection('elevation').save(data, (err, result) => {
 		if (err) {
 			return console.error(err);
