@@ -1,6 +1,6 @@
 # c
 
-c is for [https://c.armno.xyz](c.armno.xyz).
+c is for [https://c.armno.xyz](https://c.armno.xyz).
 
 ## Set up
 
