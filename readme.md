@@ -12,6 +12,7 @@ c is for [https://c.armno.xyz](https://c.armno.xyz).
 and MongoDB
 
 1. `$ brew install mongodb`
-2. `$ sudo mongod --dbpath=/data`
+2. `$ mkdir -p /data/db`
+3. `$ sudo mongod --dbpath=/data`
 
 and have fun!
