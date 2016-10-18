@@ -39,8 +39,16 @@ function updateData(response) {
 			throw err;
 		}
 
-		db.collection('elevations').insert(record);
-		process.exit();
+		db.collection('elevations').insert(record, (e) => {
+			if (e) {
+				console.error('error on updating data');
+				console.error(e);
+				return;
+			}
+
+			console.log('new record was created: ', record._id);
+			process.exit();
+		});
 	});
 }
 
