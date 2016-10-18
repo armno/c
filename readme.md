@@ -8,6 +8,10 @@ c is for [https://c.armno.xyz](https://c.armno.xyz).
 2. `$ npm i`
 3. `$ npm i -g nodemon`
 4. `$ npm start`
-5. `$ sudo mongod --dbpath=/data`
+
+and MongoDB
+
+1. `$ brew install mongodb`
+2. `$ sudo mongod --dbpath=/data`
 
 and have fun!
