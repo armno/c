@@ -28,7 +28,7 @@ function updateData(response) {
 	// `distance`
 	// `elevation_gain`
 	const record = {
-		updated_at: moment().unix(),
+		updated_at: parseFloat(moment().format('x')),
 		count: response.all_ride_totals.count,
 		distance: response.all_ride_totals.distance,
 		elevation_gain: response.all_ride_totals.elevation_gain
