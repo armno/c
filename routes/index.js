@@ -5,6 +5,7 @@ const rp = require('request-promise');
 const moment = require('moment');
 
 const MongoClient = require('mongodb').MongoClient;
+const target = 100000;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -24,10 +25,9 @@ router.get('/', function(req, res, next) {
 				}
 
 				res.render('index', {
-					currentMeters: result[0].elevation_gain,
-					targetMeters: 100000,
-					lastUpdate: moment(result[0].updated_at).format('MMMM Do YYYY, h:mm:ss'),
-					title: '#BEATYESTERDAY'
+					currentMeters: result[0].elevation_gain.toLocaleString(),
+					targetMeters: target.toLocaleString(),
+					lastUpdate: moment(result[0].updated_at).format('MMMM Do YYYY, h:mm:ss')
 				});
 		 });
 	});
