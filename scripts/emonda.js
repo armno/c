@@ -36,7 +36,7 @@ function getEmondaActivities() {
  * @return
  */
 function saveEmondaActivites(activities) {
-	let simplifiedActivities = activities.map(activity => {
+	var simplifiedActivities = activities.map(activity => {
 		return {
 			activity_id: activity.id,
 			name: activity.name,
