@@ -7,8 +7,8 @@ const moment = require('moment');
 const MongoClient = require('mongodb').MongoClient;
 const target = 100000;
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+/* GET home page. - deprecated */
+router.get('/e', function(req, res, next) {
 
 	MongoClient.connect('mongodb://localhost:27017/c', (err, db) => {
 		if (err) {
@@ -31,6 +31,36 @@ router.get('/', function(req, res, next) {
 				});
 		 });
 	});
+});
+
+router.get('/', (req, res, next) => {
+
+	MongoClient.connect('mongodb://localhost:27017/c', (err, db) => {
+		if (err) {
+			throw err;
+		}
+
+		db.collection('rides')
+			.find()
+			.toArray((e, result) => {
+				if (e) {
+					throw e;
+				}
+
+				let meters = result.reduce((a, b) => {
+					return a + b.total_elevation_gain;
+				}, 0);
+
+				// get data from `rides` collection
+				// sum all records to get current elevation
+				res.render('index', {
+					currentMeters: meters.toFixed(0).toLocaleString(),
+					targetMeters: 100000
+				});
+
+			});
+	});
+
 });
 
 module.exports = router;
