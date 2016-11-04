@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-const config = require('./config');
+// THIS SCRIPT IS USED ONLY ONCE!
+const config = require('../config');
 const rp = require('request-promise');
 const MongoClient = require('mongodb').MongoClient;
 
