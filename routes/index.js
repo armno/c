@@ -47,7 +47,7 @@ router.get('/', (req, res, next) => {
 					throw e;
 				}
 
-				let meters = result.reduce((a, b) => {
+				var meters = result.reduce((a, b) => {
 					return a + b.total_elevation_gain;
 				}, 0);
 
