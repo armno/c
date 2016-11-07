@@ -40,7 +40,8 @@ function saveEmondaActivites(activities) {
 			total_elevation_gain: activity.total_elevation_gain,
 			start_date: activity.start_date,
 			elev_high: activity.elev_high,
-			elev_low: activity.elev_low
+			elev_low: activity.elev_low,
+			updated_at: parseFloat(moment().format('x'))
 		};
 	});
 
