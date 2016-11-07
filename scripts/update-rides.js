@@ -6,7 +6,7 @@ const moment = require('moment');
 const MongoClient = require('mongodb').MongoClient;
 
 function getYesterdayRides() {
-	const yesterday = moment().subtract(1, 'days').format('X');
+	const yesterday = moment().subtract(3, 'days').format('X');
 	const EMONDA_ID = 'b3027991';
 	const RIDE_TYPE = 'Ride';
 	const BASEURL = `https://www.strava.com/api/v3`;
@@ -45,6 +45,10 @@ function saveEmondaActivites(activities) {
 	});
 
 	console.info(`INFO: Found new ${simplifiedActivities.length} rides from strava`);
+
+	if (simplifiedActivities.length === 0) {
+		return;
+	}
 
 	MongoClient.connect('mongodb://localhost:27017/c', (err, db) => {
 		if (err) {
