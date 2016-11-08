@@ -3,15 +3,21 @@
 const config = require('../config');
 const rp = require('request-promise');
 const moment = require('moment');
-const MongoClient = require('mongodb').MongoClient;
+const Ride = require('../db/rides').Ride;
 
+/**
+ * get new ride activities of the bike since the last 1 day
+ * @return {promise}
+ */
 function getYesterdayRides() {
-	const yesterday = moment().subtract(1, 'days').format('X');
 	const EMONDA_ID = 'b3027991';
 	const RIDE_TYPE = 'Ride';
+	const LIMIT = 5;
 	const BASEURL = `https://www.strava.com/api/v3`;
+
+	const yesterday = moment().subtract(1, 'days').format('X');
 	const options = {
-		uri: `${BASEURL}/athletes/${config.PROFILE_ID}/activities?after=${yesterday}&per_page=5`,
+		uri: `${BASEURL}/athletes/${config.PROFILE_ID}/activities?after=${yesterday}&per_page=${LIMIT}`,
 		headers: {
 			Authorization: `Bearer ${config.API_KEY}`
 		},
@@ -32,8 +38,8 @@ function getYesterdayRides() {
  * @return
  */
 function saveEmondaActivites(activities) {
-	var simplifiedActivities = activities.map(activity => {
-		return {
+	var newRides = activities.map(activity => {
+		return new Ride({
 			activity_id: activity.id,
 			name: activity.name,
 			distance: activity.distance,
@@ -42,30 +48,26 @@ function saveEmondaActivites(activities) {
 			elev_high: activity.elev_high,
 			elev_low: activity.elev_low,
 			updated_at: parseFloat(moment().format('x'))
-		};
-	});
-
-	console.info(`INFO: Found new ${simplifiedActivities.length} rides from strava`);
-
-	if (simplifiedActivities.length === 0) {
-		return;
-	}
-
-	MongoClient.connect('mongodb://localhost:27017/c', (err, db) => {
-		if (err) {
-			throw err;
-		}
-
-		db.collection('rides').insert(simplifiedActivities, (e) => {
-			if (e) {
-				console.error('ERROR:' + e.message);
-				process.exit();
-			}
-
-			console.info(`saved ${simplifiedActivities.length} records`);
-			process.exit();
 		});
 	});
+
+	console.info(`INFO: Found new ${newRides.length} rides from strava`);
+
+	if (newRides.length === 0) {
+		console.info(`INFO: No new rides. Exiting ...`);
+		process.exit();
+	}
+
+	Ride.create(newRides, (e, result) => {
+		if (e) {
+			console.error('ERROR:' + e.message);
+			process.exit();
+		}
+
+		console.info(`INFO: Saved ${newRides.length} new records.`);
+		process.exit();
+	});
+
 }
 
 getYesterdayRides()

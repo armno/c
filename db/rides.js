@@ -17,7 +17,8 @@ const rideSchema = new Schema({
 	total_elevation_gain: Number,
 	start_date: Date,
 	elev_high: Number,
-	elev_low: Number
+	elev_low: Number,
+	updated_at: Date
 });
 
 exports.Ride = mongoose.model('Ride', rideSchema);
