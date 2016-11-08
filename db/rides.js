@@ -11,14 +11,23 @@ db.once('open', (callback) => {
 });
 
 const rideSchema = new Schema({
-	activity_id: Number,
+	activity_id: {
+		type: Number,
+		unique: true,
+		index: true
+	},
 	name: String,
 	distance: Number,
 	total_elevation_gain: Number,
 	start_date: Date,
 	elev_high: Number,
-	elev_low: Number,
-	updated_at: Date
+	elev_low: Number
+},
+{
+	timestamps: {
+		createdAt: 'created_at',
+		updatedAt: 'updated_at'
+	}
 });
 
 exports.Ride = mongoose.model('Ride', rideSchema);

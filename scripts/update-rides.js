@@ -46,8 +46,7 @@ function saveEmondaActivites(activities) {
 			total_elevation_gain: activity.total_elevation_gain,
 			start_date: activity.start_date,
 			elev_high: activity.elev_high,
-			elev_low: activity.elev_low,
-			updated_at: parseFloat(moment().format('x'))
+			elev_low: activity.elev_low
 		});
 	});
 
@@ -58,13 +57,14 @@ function saveEmondaActivites(activities) {
 		process.exit();
 	}
 
-	Ride.create(newRides, (e, result) => {
+	Ride.create(
+		newRides,
+		(e, result) => {
 		if (e) {
-			console.error('ERROR:' + e.message);
-			process.exit();
+			console.error(`ERROR: ${e.message}`);
 		}
 
-		console.info(`INFO: Saved ${newRides.length} new records.`);
+		console.info(`INFO: Saved new records.`);
 		process.exit();
 	});
 
