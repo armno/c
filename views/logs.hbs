@@ -9,7 +9,11 @@
 <ol class="logs">
 	{{#each rides}}
 	<li class="logs--item">
-		<div class="logs-date">{{formatDate start_date}}</div>
+		<div class="logs-date">
+			<a href="https://www.strava.com/activities/{{ activity_id }}" target="_blank">
+				{{formatDate start_date}}
+			</a>
+		</div>
 		<span class="logs--elevation">{{formatNumber total_elevation_gain "0,0.0"}}m</span>
 		{{name}}
 	</li>
