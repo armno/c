@@ -59,7 +59,7 @@ router.get('/', (req, res, next) => {
 
 });
 
-router.get('/logs', (req, res, next) => {
+router.get('/rides', (req, res, next) => {
 	Ride.find({}, (err, rides) => {
 		if (err) {
 			throw err;
