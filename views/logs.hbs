@@ -1,9 +1,20 @@
 <a href="/" class="goback-link">(back)</a>
 
-<div class="center">
-	{{numRides}} Rides<br>
-	{{formatNumber distance "0,0.0"}} km Distance<br>
-	{{formatNumber elevations "0,0.0"}} m Elevation
+<div class="summary summary__primary center">
+	{{formatNumber elevations "0,0.0"}} m
+	<div class="summary--helper-text">Elevation Gain</div>
+</div>
+
+<div class="summary__secondary-container center">
+	<div class="summary summary__secondary">
+		{{formatNumber distance "0,0.0"}} km
+		<div class="summary--helper-text">Distance</div>
+	</div>
+
+	<div class="summary summary__secondary">
+		{{numRides}}
+		<div class="summary--helper-text">Rides</div>
+	</div>
 </div>
 
 <ol class="logs">
