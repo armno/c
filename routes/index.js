@@ -24,10 +24,23 @@ router.get('/', (req, res, next) => {
 		// sum all records to get current elevation
 		res.render('index', {
 			currentMeters: meters.toFixed(0).toLocaleString(),
-			targetMeters: 100000
+			targetMeters: 100000,
+			containerClass: 'flex'
 		});
 	});
 
+});
+
+router.get('/logs', (req, res, next) => {
+	Ride.find({}, (err, rides) => {
+		if (err) {
+			throw err;
+		}
+
+		res.render('logs', {
+			rides: rides
+		});
+	});
 });
 
 module.exports = router;
