@@ -11,13 +11,21 @@ var webhookHandler = GitHubWebhook({ path: '/pull', secret: config.GITHUB_SECRET
 var exec = require('child_process').exec;
 
 var routes = require('./routes/index');
+
 var moment = require('moment');
+var numeral = require('numeral');
 
 var app = express();
 var hbs = require('hbs');
+
+// configure Handlebars
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('formatDate', (datetime) => {
-	return moment(datetime).format('MM.DD.YYYY');
+	return moment(datetime).format('DD MMMM YYYY');
+});
+
+hbs.registerHelper('formatNumber', (num, format) => {
+	return numeral(num).format(format);
 });
 
 // view engine setup

@@ -3,9 +3,9 @@ const router = express.Router();
 const request = require('request');
 const rp = require('request-promise');
 const moment = require('moment');
+const numeral = require('numeral');
 
 const target = 100000;
-
 const Ride = require('../db/rides').Ride;
 
 /**
@@ -67,12 +67,9 @@ router.get('/rides', (req, res, next) => {
 
 		rides.sort(sortActivities);
 
-		// number of Rides
-		// total elevation gain
-		// total distance
 		const numRides = rides.length;
-		const elevations = sumThings(rides, 'total_elevation_gain').toFixed(2);
-		const distance = (sumThings(rides, 'distance') / 1000).toFixed(2);
+		const elevations = sumThings(rides, 'total_elevation_gain');
+		const distance = sumThings(rides, 'distance') / 1000;
 
 		res.render('logs', {
 			rides,

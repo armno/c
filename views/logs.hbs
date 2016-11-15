@@ -2,15 +2,15 @@
 
 <div class="center">
 	{{numRides}} Rides<br>
-	{{distance}} km Distance<br>
-	{{elevations}} m Elevation
+	{{formatNumber distance "0,0.0"}} km Distance<br>
+	{{formatNumber elevations "0,0.0"}} m Elevation
 </div>
 
 <ol class="logs">
 	{{#each rides}}
 	<li class="logs--item">
 		<div class="logs-date">{{formatDate start_date}}</div>
-		<span class="logs--elevation">{{total_elevation_gain}}m</span>
+		<span class="logs--elevation">{{formatNumber total_elevation_gain "0,0.0"}}m</span>
 		{{name}}
 	</li>
 	{{/each}}
