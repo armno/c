@@ -12,3 +12,4 @@ lib/
 jspm_packages/
 
 config.js
+npm-debug.log
