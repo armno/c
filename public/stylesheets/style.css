@@ -136,3 +136,8 @@ a {
 	border-bottom: 1px solid #dfdfdf;
 	padding-bottom: 60px;
 }
+
+.homepage-bike {
+	width: 200px;
+	height: auto;
+}
