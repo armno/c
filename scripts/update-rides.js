@@ -70,6 +70,7 @@ function saveEmondaActivites(activities) {
 
 }
 
+// @TODO - is this the correct way to do this?
 getYesterdayRides()
 	.then(saveEmondaActivites)
 	.catch(err => {

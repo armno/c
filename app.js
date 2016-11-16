@@ -1,22 +1,21 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const moment = require('moment');
+const numeral = require('numeral');
+const exec = require('child_process').exec;
+const GitHubWebhook = require('express-github-webhook');
 
-var config = require('./config');
-var GitHubWebhook = require('express-github-webhook');
-var webhookHandler = GitHubWebhook({ path: '/pull', secret: config.GITHUB_SECRET });
-var exec = require('child_process').exec;
+const config = require('./config');
+const webhookHandler = GitHubWebhook({ path: '/pull', secret: config.GITHUB_SECRET });
 
-var routes = require('./routes/index');
+const routes = require('./routes/index');
 
-var moment = require('moment');
-var numeral = require('numeral');
-
-var app = express();
-var hbs = require('hbs');
+const app = express();
+const hbs = require('hbs');
 
 // configure Handlebars
 hbs.registerPartials(__dirname + '/views/partials');
@@ -44,8 +43,8 @@ app.use(webhookHandler);
 app.use('/', routes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-	var err = new Error('Not Found');
+app.use((req, res, next) => {
+	const err = new Error('Not Found');
 	err.status = 404;
 	next(err);
 });
@@ -55,7 +54,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-	app.use(function(err, req, res, next) {
+	app.use((err, req, res, next) => {
 		res.status(err.status || 500);
 		res.render('error', {
 			message: err.message,
@@ -66,7 +65,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
 	res.status(err.status || 500);
 	res.render('error', {
 		message: err.message,
@@ -74,16 +73,16 @@ app.use(function(err, req, res, next) {
 	});
 });
 
-webhookHandler.on('push', function (repo, data) {
+webhookHandler.on('push', (repo, data) => {
 	// run git pull
 	exec('cd /var/www/html/c.armno.xyz && git pull origin master',
-		function(error, stdout, stderror) {
-			if (!error) {
-				console.info(stdout);
-			} else {
+		(error, stdout, stderror) => {
+			if (error) {
 				console.error(error);
+			} else {
+				console.info(stdout);
 			}
-		})
+		});
 });
 
 module.exports = app;

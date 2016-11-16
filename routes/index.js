@@ -5,41 +5,24 @@ const rp = require('request-promise');
 const moment = require('moment');
 const numeral = require('numeral');
 
-const target = 100000;
+const TARGET = 100000;
 const Ride = require('../db/rides').Ride;
 
-/**
- * summarize total of `prop`
- * @param  {array} rides
- * @param  {string} prop
- * @return {number}
- */
-function sumThings(rides, prop) {
-	return rides.reduce((a, b) => {
-		return a + b[prop];
-	}, 0);
-}
+router.get('/', getIndex);
+router.get('/rides', getRides);
+
+module.exports = router;
+
+/**** Implemetation details *****/
 
 /**
- * sort activities array by newest-first
- * @param  {Ride} a
- * @param  {Ride} b
- * @return {number}
+ * home page route: display current meters and goal
+ *
+ * @param  {Request}   req
+ * @param  {Response}  res
+ * @param  {Function}  next
  */
-function sortActivities(a, b) {
-	if (a.activity_id > b.activity_id) {
-		return -1;
-	}
-
-	if (a.activity_id < b.activity_id) {
-		return 1;
-	}
-
-	return 0;
-}
-
-router.get('/', (req, res, next) => {
-
+function getIndex(req, res, next) {
 	Ride.find({}, (err, rides) => {
 
 		if (err) {
@@ -51,21 +34,27 @@ router.get('/', (req, res, next) => {
 		// get data from `rides` collection
 		// sum all records to get current elevation
 		res.render('index', {
-			currentMeters: meters.toFixed(0).toLocaleString(),
-			targetMeters: 100000,
+			currentMeters: meters.toFixed(0),
+			targetMeters: TARGET,
 			containerClass: 'flex'
 		});
 	});
+}
 
-});
-
-router.get('/rides', (req, res, next) => {
+/**
+ * /rides page route: display activity logs
+ *
+ * @param  {Request}   req
+ * @param  {Response}   res
+ * @param  {Function} next
+ */
+function getRides(req, res, next) {
 	Ride.find({}, (err, rides) => {
 		if (err) {
 			throw err;
 		}
 
-		rides.sort(sortActivities);
+		rides.sort(sortActivitiesByStravaId);
 
 		const numRides = rides.length;
 		const elevations = sumThings(rides, 'total_elevation_gain');
@@ -78,6 +67,36 @@ router.get('/rides', (req, res, next) => {
 			distance
 		});
 	});
-});
+}
 
-module.exports = router;
+/**
+ * summarize total of `prop` where prop is a number-type value
+ *
+ * @param  {array} rides
+ * @param  {string} prop
+ * @return {number}
+ */
+function sumThings(rides, prop) {
+	return rides.reduce((a, b) => {
+		return a + b[prop];
+	}, 0);
+}
+
+/**
+ * sort activities array by newest-first
+ *
+ * @param  {Ride} a
+ * @param  {Ride} b
+ * @return {number}
+ */
+function sortActivitiesByStravaId(a, b) {
+	if (a.activity_id > b.activity_id) {
+		return -1;
+	}
+
+	if (a.activity_id < b.activity_id) {
+		return 1;
+	}
+
+	return 0;
+}
