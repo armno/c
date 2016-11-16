@@ -75,7 +75,7 @@ app.use((err, req, res, next) => {
 
 webhookHandler.on('push', (repo, data) => {
 	// run git pull
-	exec('cd /var/www/html/c.armno.xyz && git pull origin master',
+	exec('cd /var/www/html/c.armno.xyz && git pull origin master && npm install',
 		(error, stdout, stderror) => {
 			if (error) {
 				console.error(error);
