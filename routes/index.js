@@ -34,7 +34,7 @@ function getIndex(req, res, next) {
 		// get data from `rides` collection
 		// sum all records to get current elevation
 		res.render('index', {
-			currentMeters: meters.toFixed(0),
+			currentMeters: meters,
 			targetMeters: TARGET,
 			containerClass: 'flex'
 		});
