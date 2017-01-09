@@ -10,6 +10,7 @@ const Ride = require('../db/rides').Ride;
 
 router.get('/', getIndex);
 router.get('/rides', getRides);
+router.get('/goal', getGoal);
 
 module.exports = router;
 
@@ -67,6 +68,10 @@ function getRides(req, res, next) {
 			distance
 		});
 	});
+}
+
+function getGoal(req, res, next) {
+	res.render('page');
 }
 
 /**
