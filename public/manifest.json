@@ -1,5 +1,10 @@
 {
+	"short_name": "c",
 	"name": "c",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"lang": "en",
 	"icons": [
 		{
 			"src": "icon-48.png",
