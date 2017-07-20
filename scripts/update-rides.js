@@ -15,7 +15,7 @@ function getYesterdayRides() {
 	const LIMIT = 5;
 	const BASEURL = `https://www.strava.com/api/v3`;
 
-	const yesterday = moment().subtract(1, 'days').format('X');
+	const yesterday = moment().subtract(3, 'days').format('X');
 	const options = {
 		uri: `${BASEURL}/athletes/${config.PROFILE_ID}/activities?after=${yesterday}&per_page=${LIMIT}`,
 		headers: {
