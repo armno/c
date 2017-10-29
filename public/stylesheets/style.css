@@ -34,10 +34,25 @@ a {
 	border-bottom: 1px dotted;
 }
 
+header {
+	margin-top: 10vh;
+}
+
+main {
+	flex-grow: 1;
+}
+
+.link-to-goal {
+	display: inline-block;
+	margin-top: 1em;
+	font-size: 0.9em;
+}
+
 .footer {
 	margin-top: 5vh;
 	margin-bottom: 30px;
 	font-size: 0.8em;
+	line-height: 1;
 }
 
 .footer p {
@@ -46,7 +61,8 @@ a {
 }
 
 .flex .footer {
-	margin-bottom: 0;
+	margin-bottom: 8vh;
+	opacity: 0.8;
 }
 
 .container {

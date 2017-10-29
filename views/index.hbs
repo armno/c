@@ -6,12 +6,13 @@
 </header>
 <main class="center">
 	<p>
-		<a href="https://www.strava.com/athletes/3637623">Armno</a> has climbed <code>{{formatNumber currentMeters "0,0.0"}}</code> meters so far.
+		<code>{{formatNumber currentMeters "0,0.0"}} m</code> /
+		<code>{{formatNumber targetMeters "0,0"}} m</code>
+		<br>
+		elevation gain
 	</p>
 
-	<p>
-		Help him reach <code>{{formatNumber targetMeters "0,0"}}</code> meters <a href="/goal">goal!</a>
-	</p>
+	<a href="/goal" class="link-to-goal">what is this?</a>
 </main>
 
 {{> footer}}

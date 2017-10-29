@@ -5,7 +5,7 @@ const rp = require('request-promise');
 const moment = require('moment');
 const numeral = require('numeral');
 
-const TARGET = 100000;
+const TARGET = 150000;
 const Ride = require('../db/rides').Ride;
 
 router.get('/', getIndex);
