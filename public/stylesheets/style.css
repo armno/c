@@ -186,3 +186,57 @@ blockquote {
 	font-style: italic;
 	color: #777;
 }
+
+@keyframes animate-line-long {
+	80% {
+		stroke-dashoffset: 34;
+	}
+	to {
+		stroke-dashoffset: 38;
+	}
+}
+
+@keyframes animate-line-short {
+	80% {
+		stroke-dashoffset: 16;
+	}
+	to {
+		stroke-dashoffset: 20;
+	}
+}
+
+#headline-long {
+	stroke-dasharray: 19;
+	stroke-dashoffset: 19;
+	animation: animate-line-long 2s linear alternate infinite;
+}
+
+#headline-short {
+	stroke-dasharray: 10;
+	stroke-dashoffset: 10;
+	animation: animate-line-short 2s linear alternate infinite;
+}
+
+@keyframes sun-light {
+	to {
+		fill: #FFA969;
+		transform: translateX(8px)
+	}
+}
+
+@keyframes sun-dark {
+	to {
+		fill: #C62F2F;
+		transform: translateX(5px)
+	}
+}
+
+#sun-light {
+	transform: translateX(0);
+	animation: sun-light 2s linear alternate infinite;
+}
+
+#sun-dark {
+	transform: translateX(0);
+	animation: sun-dark 2s linear alternate infinite;
+}
