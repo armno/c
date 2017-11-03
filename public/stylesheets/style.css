@@ -44,8 +44,11 @@ main {
 
 .link-to-goal {
 	display: inline-block;
-	margin-top: 1em;
 	font-size: 0.9em;
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+	color: #F38D33;
 }
 
 .footer {
