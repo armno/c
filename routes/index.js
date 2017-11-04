@@ -31,6 +31,7 @@ function getIndex(req, res, next) {
 		}
 
 		var meters = sumThings(rides, 'total_elevation_gain');
+		meters = 119000;
 
 		// get data from `rides` collection
 		// sum all records to get current elevation
