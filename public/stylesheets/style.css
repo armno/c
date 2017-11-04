@@ -53,19 +53,15 @@ main {
 
 .footer {
 	margin-top: 5vh;
-	margin-bottom: 30px;
-	font-size: 0.8em;
+	margin-bottom: 20px;
+	font-size: 0.7em;
 	line-height: 1;
 }
 
-.footer p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
 .flex .footer {
-	margin-bottom: 8vh;
 	opacity: 0.8;
+	position: absolute;
+	bottom: 0;
 }
 
 .container {

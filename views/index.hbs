@@ -1,78 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="281" height="543" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<defs>
-		<rect id="path-1" width="60" height="30" rx="2" />
-	</defs>
-	<g id="Page-1" fill="none" fill-rule="evenodd">
-		<g id="Nexus-6P">
-			<g id="mountain">
-				<path id="Shape" stroke="#4A90E2" stroke-width="3.008" d="M12.135 50.834C8.737 55.778 5.43 60.6 2.06 65.484h38.286M51.534 65.515H81.91C74.632 55.05 67.504 44.828 60.376 34.607M57.46 30.39c-1.956-2.79-3.91-5.61-5.866-8.432-7.52 7.583-14.677 14.71-21.684 21.93-1.955 2.002-3.64 2.336-5.504.09-1.263-1.515-2.526-3.002-4.15-4.943-1.685 2.457-3.34 4.823-4.933 7.19"
-				 stroke-linecap="round" stroke-linejoin="round" />
-				<path id="Shape" stroke="#4A90E2" stroke-width="3.008" d="M31.805 11.98h19.64V2.242h-19.64v9.736z" />
-				<path id="Shape" fill="#4A90E2" fill-rule="nonzero" d="M51.594 22.9c-.752 0-1.353-.608-1.353-1.366V12.13c0-.757.602-1.364 1.354-1.364.752 0 1.353.607 1.353 1.365v9.404c0 .758-.6 1.365-1.353 1.365z"
-				/>
-			</g>
-			<g id="progress-line" stroke-width="4" transform="translate(25 77)">
-				<path id="Line" stroke="#9FCBFF" d="M20.5 0v436" stroke-linecap="round" />
-				<circle id="Oval" cx="20" cy="161" r="20" fill="#9FCBFF" stroke="#6DAAF2" />
-				<circle id="Oval-Copy" cx="20" cy="255" r="10" fill="#9FCBFF" stroke="#6DAAF2" />
-			</g>
-			<g id="goal">
-				<g id="bg" fill="#F38D33" transform="translate(115 3)">
-					<rect id="Rectangle-2" width="150" height="61" x="10" rx="2" />
-					<path id="Triangle" d="M0 30.5L9.997 22v17z" />
-				</g>
-				<text id="150,000m" fill="#FFD7BD" font-family="RobotoMono-Bold, Roboto Mono" font-size="20" font-weight="bold" transform="translate(115 3)">
-					<tspan x="37" y="31">
-						{{formatNumber targetMeters "0,0"}}m
-					</tspan>
-				</text>
-				<text id="Extended-Goal" fill="#FFD0B1" font-family="RobotoMono-Regular, Roboto Mono" font-size="12" transform="translate(115 3)">
-					<tspan x="39" y="47">Extended Goal</tspan>
-				</text>
-			</g>
-			<g id="current-elevation">
-				<g id="bg" fill="#4A90E2" transform="translate(109 204)">
-					<rect id="Rectangle-2" width="160" height="68" x="12" rx="2" />
-					<path id="Triangle" d="M0 34l12.937-11v22z" />
-				</g>
-				<g id="text-current">
-					<text id="Elevation-Gain" fill="#C3DFFF" font-family="RobotoMono-Regular, Roboto Mono" font-size="12" transform="translate(134 214)">
-						<tspan x="17" y="44.149">Elevation Gain</tspan>
+<svg width="281" height="545" viewBox="0 0 281 545" xmlns="http://www.w3.org/2000/svg">
+  <g id="Page-1" fill="none" fill-rule="evenodd">
+    <g id="c">
+      <g id="mountain">
+        <path d="M12.135 50.834C8.737 55.778 5.43 60.6 2.06 65.484h38.286M51.534 65.515H81.91C74.632 55.05 67.504 44.828 60.376 34.607M57.46 30.39c-1.956-2.79-3.91-5.61-5.866-8.432-7.52 7.583-14.677 14.71-21.684 21.93-1.955 2.002-3.64 2.336-5.504.09-1.263-1.515-2.526-3.002-4.15-4.943-1.685 2.457-3.34 4.823-4.933 7.19" id="Shape" stroke="#4A90E2" stroke-width="3.008" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M31.805 11.98h19.64V2.242h-19.64v9.736z" id="Shape" stroke="#4A90E2" stroke-width="3.008"/>
+        <path d="M51.594 22.9c-.752 0-1.353-.608-1.353-1.366V12.13c0-.757.602-1.364 1.354-1.364.752 0 1.353.607 1.353 1.365v9.404c0 .758-.6 1.365-1.353 1.365z" id="Shape" fill="#4A90E2" fill-rule="nonzero"/>
+      </g>
+      <g id="progress-line" transform="translate(25 70)">
+        <path d="M20.5 0v198" id="line-togo" stroke="#9FCBFF" stroke-width="4" stroke-linecap="round"/>
+        <path d="M20.5 238v220" id="line-collected" stroke="#9FCBFF" stroke-width="8"/>
+        <circle id="point-current-elevation" stroke="#6DAAF2" stroke-width="4" fill="#9FCBFF" cx="20" cy="218" r="20"/>
+        <circle id="point-initial-goal" stroke="#6DAAF2" stroke-width="4" fill="#9FCBFF" cx="20" cy="352" r="10"/>
+        <circle id="start-point" fill="#6DAAF2" cx="20" cy="465" r="10"/>
+      </g>
+			<a href="/goal">
+				<g id="goal">
+					<path d="M121 3h146c1.105 0 2 .895 2 2v57c0 1.105-.895 2-2 2H121c-1.105 0-2-.895-2-2V5c0-1.105.895-2 2-2zm-12 30.5l9.997-8.5v17L109 33.5z" id="bg" fill="#F38D33"/>
+					<text id="150,000m" font-family="RobotoMono-Bold, Roboto Mono" font-size="20" font-weight="bold" fill="#FFD7BD" transform="translate(109 3)">
+						<tspan x="37" y="33">
+							{{formatNumber targetMeters "0,0"}}m
+						</tspan>
 					</text>
-					<text id="119,756m" fill="#EBF4FF" font-family="RobotoMono-Bold, Roboto Mono" font-size="28" font-weight="bold" transform="translate(134 214)">
-						<tspan x="0" y="26.649">
+					<text id="Goal" font-family="RobotoMono-Regular, Roboto Mono" font-size="12" fill="#FFD0B1" transform="translate(109 3)">
+						<tspan x="71" y="49">Goal</tspan>
+					</text>
+				</g>
+			</a>
+			<a href="/rides">
+				<g id="current-elevation">
+					<path d="M121 298.203V320c0 1.105.895 2 2 2h156c1.105 0 2-.895 2-2v-64c0-1.105-.895-2-2-2H123c-1.105 0-2 .895-2 2v21.797L109 288l12 10.203z" id="bg" fill="#4A90E2"/>
+					<text id="Elevation-Gain" font-family="RobotoMono-Regular, Roboto Mono" font-size="12" fill="#C3DFFF" transform="translate(109 254)">
+						<tspan x="42" y="56.149">Elevation Gain</tspan>
+					</text>
+					<text id="119,756m" font-family="RobotoMono-Bold, Roboto Mono" font-size="28" font-weight="bold" fill="#EBF4FF" transform="translate(109 254)">
+						<tspan x="25" y="39.649">
 							{{formatNumber currentMeters "0,0"}}m
 						</tspan>
 					</text>
 				</g>
-			</g>
-			<g id="initial-goal">
-				<g id="bg" fill="#9FCBFF" transform="translate(130 306)">
-					<path id="Triangle-2" d="M.625 27.5l9-7.125v14.25z" />
-					<rect id="Rectangle" width="121" height="54" x="9" rx="2" />
-				</g>
-				<g id="text-initial-goal" fill="#EBF4FF">
-					<text id="Initial-Goal" font-family="RobotoMono-Regular, Roboto Mono" font-size="10" transform="translate(151 314)">
-						<tspan x="12" y="35">Initial Goal</tspan>
-					</text>
-					<text id="100,000m" font-family="RobotoMono-Bold, Roboto Mono" font-size="20" font-weight="bold" transform="translate(151 314)">
-						<tspan x="0" y="19">100,000m</tspan>
-					</text>
-				</g>
-			</g>
-			<g id="start">
-				<g id="Rectangle-3" transform="translate(15 513)">
-					<use fill="#9FCBFF" xlink:href="#path-1" />
-					<rect width="58" height="28" x="1" y="1" stroke="#6DAAF2" stroke-width="2" rx="2" />
-				</g>
-				<text id="Start" fill="#4A90E2" font-family="RobotoMono-Bold, Roboto Mono" font-size="12" font-weight="bold" transform="translate(15 513)">
-					<tspan x="12" y="19">Start</tspan>
-				</text>
-			</g>
-		</g>
-	</g>
+			</a>
+      <g id="initial-goal">
+        <path d="M118 416.87l-8.375 6.63 8.375 6.63V448c0 1.105.895 2 2 2h117c1.105 0 2-.895 2-2v-50c0-1.105-.895-2-2-2H120c-1.105 0-2 .895-2 2v18.87z" id="bg" fill="#9FCBFF"/>
+        <text id="29-July-2017" font-family="RobotoMono-Regular, Roboto Mono" font-size="10" fill="#EBF4FF" transform="translate(109 396)">
+          <tspan x="33" y="44">29 July 2017</tspan>
+        </text>
+        <text id="100,000m" font-family="RobotoMono-Bold, Roboto Mono" font-size="20" font-weight="bold" fill="#EBF4FF" transform="translate(109 396)">
+          <tspan x="21" y="29">100,000m</tspan>
+        </text>
+      </g>
+      <g id="start">
+        <path d="M118 518.87l-8.375 6.63 8.375 6.63V543c0 1.105.895 2 2 2h88c1.105 0 2-.895 2-2v-36c0-1.105-.895-2-2-2h-88c-1.105 0-2 .895-2 2v11.87z" id="bg" fill="#9FCBFF"/>
+        <text id="7-July-2016" font-family="RobotoMono-Regular, Roboto Mono" font-size="9" fill="#EBF4FF" transform="translate(109 505)">
+          <tspan x="25" y="33">7 July 2016</tspan>
+        </text>
+        <text id="Start" font-family="RobotoMono-Bold, Roboto Mono" font-size="12" font-weight="bold" fill="#EBF4FF" transform="translate(109 505)">
+          <tspan x="37" y="18">Start</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
 </svg>
 
-<div class="text-right">
-	<a href="/goal" class="link-to-goal">what is this?</a>
-</div>
+{{> footer}}
