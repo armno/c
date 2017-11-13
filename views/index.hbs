@@ -67,7 +67,7 @@
 
 		const pathLength = document.querySelector('#line-togo').getTotalLength();
 
-		const pixelToMove = Math.round(percentage / 50 * pathLength);
+		const pixelToMove = Math.round(pathLength - (percentage / 100 * pathLength));
 		const elementToMove = document.querySelector('#current-elevation');
 
 		TweenLite.to(elementToMove, 2, {
