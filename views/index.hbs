@@ -67,13 +67,16 @@
 
 		const pathLength = document.querySelector('#line-togo').getTotalLength();
 
-		const pixelToMove = Math.round(pathLength - (percentage / 100 * pathLength));
 		const elementToMove = document.querySelector('#current-elevation');
+
+		// 36px = half of moving element's height
+		const pixelToMove = Math.round(pathLength - (percentage / 100 * pathLength)) + 36;
 
 		TweenLite.to(elementToMove, 2, {
 			y: pixelToMove,
 			ease: Bounce.easeOut,
-			opacity: 1
+			opacity: 1,
+			delay: 1.5
 		});
 
 		const progressLine = document.querySelector('#line-collected');
