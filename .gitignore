@@ -15,3 +15,4 @@ config.js
 npm-debug.log
 
 .vscode/
+data/

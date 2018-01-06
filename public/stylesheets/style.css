@@ -13,12 +13,14 @@ body {
 
 body {
 	color: #444;
+	background-color: #4A90E2;
 	max-width: 1000px;
 	margin: auto;
 	/*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;*/
 	font-family: 'Roboto Mono', monospace;
 	font-size: 19px;
 	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
 }
 
 code {
@@ -238,4 +240,15 @@ blockquote {
 #sun-dark {
 	transform: translateX(0);
 	animation: sun-dark 2s linear alternate infinite;
+}
+
+.current-progress {
+	font-size: 18vw;
+	font-weight: bold;
+	color: #fff;
+}
+
+.meters-label {
+	color: #fff;
+	text-transform: uppercase;
 }
